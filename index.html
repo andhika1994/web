@@ -5,14 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pengumuman Kelulusan Kelas 6C</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @keyframes fade-in {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-in {
+      animation: fade-in 0.6s ease-out;
+    }
+  </style>
 </head>
-<body class="bg-gradient-to-r from-cyan-500 to-blue-700 min-h-screen flex items-center justify-center">
+<body class="min-h-screen bg-cover bg-center bg-no-repeat flex items-center justify-center" style="background-image: url('https://source.unsplash.com/1600x900/?graduation,school');">
 
-  <div class="bg-white p-8 rounded-2xl shadow-2xl w-full max-w-md text-center animate-fade-in">
+  <div class="bg-white bg-opacity-80 backdrop-blur-lg p-8 rounded-2xl shadow-2xl w-full max-w-md text-center animate-fade-in">
     <h1 class="text-2xl font-bold text-gray-800 mb-4">Pengumuman Kelulusan kelas 6C 2025</h1>
-    <p class="text-gray-600 mb-6">Silahkan masukkan NISN kamu dengan benar.</p>
-    <p class="text-gray-600 mb-6">Website ini akan aktif selama 2 bulan kedepan, jika perlu maka kunjungi lagi ya.. sukses semua !!</p>
-    <p class="text-gray-600 mb-6">made by Mr. Andhika Rizky Perdana</p>
+    <p class="text-gray-600 mb-2">Silakan masukkan NISN kamu dengan benar.</p>
+    <p class="text-gray-600 mb-2">Website ini akan aktif selama 2 bulan ke depan. Jika perlu, kunjungi lagi ya. Sukses selalu!</p>
+    <p class="text-gray-600 mb-6 text-sm">Made by Mr. Andhika Rizky Perdana</p>
 
     <input type="text" id="nisnInput" placeholder="Masukkan NISN" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400" />
 
@@ -34,7 +43,6 @@
   </div>
 
   <script>
-    // Data NISN beserta nama dan link file PDF masing-masing
     const dataSiswa = {
       '0134341883': {
         nama: 'BEKO AHMAD CUDIDO',
@@ -48,7 +56,7 @@
         nama: 'DEANDRA AURELIA NURFARIZ',
         file: 'https://drive.google.com/file/d/1YPf-sbR0nPCGrLsPtj_iQF6Cuq7rn8a2/view?usp=sharing'
       },
-      '0132839566 ': {
+      '0132839566': {
         nama: 'FARAH PUTRI MASYITOH',
         file: 'https://drive.google.com/file/d/1E5xhjjWP44vtyCW-8F_KjQKzUOvr8hYO/view?usp=sharing'
       },
@@ -117,16 +125,6 @@
       }
     }
   </script>
-
-  <style>
-    @keyframes fade-in {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .animate-fade-in {
-      animation: fade-in 0.6s ease-out;
-    }
-  </style>
 
 </body>
 </html>
