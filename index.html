@@ -7,10 +7,12 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     body {
+      margin: 0;
       background-image: url('FOTO.jpg');
-      background-size: cover;
-      background-position: center;
+      background-size: contain; /* Tampilkan gambar penuh */
       background-repeat: no-repeat;
+      background-position: top center;
+      background-attachment: scroll; /* Biarkan ikut scroll */
     }
 
     @keyframes fade-in-up {
@@ -29,103 +31,60 @@
     }
   </style>
 </head>
-<body class="min-h-screen flex items-center justify-center px-4">
+<body>
 
-  <div class="bg-white/75 backdrop-opacity-70 p-8 rounded-2xl shadow-2xl w-full max-w-md text-center fade-in-up">
-    <h1 class="text-2xl md:text-3xl font-extrabold text-gray-900 drop-shadow-md mb-4">
-      Pengumuman Kelulusan kelas 6C 2025
-    </h1>
-    <p class="text-gray-800 text-base md:text-lg font-semibold drop-shadow-sm mb-2">
-      Silahkan masukkan NISN kamu dengan benar.
-    </p>
-    <p class="text-gray-800 text-sm md:text-base font-medium drop-shadow-sm mb-2">
-      Website ini akan aktif selama 2 bulan ke depan. Jika perlu, kunjungi lagi ya... sukses semua!!
-    </p>
-    <p class="text-gray-700 text-xs font-semibold italic drop-shadow-sm mb-6">
-      made by Mr. Andhika Rizky Perdana
-    </p>
+  <div class="min-h-screen flex flex-col items-center justify-center px-4 py-12 fade-in-up">
+    <div class="bg-white/75 backdrop-opacity-70 p-8 rounded-2xl shadow-2xl w-full max-w-md text-center">
+      <h1 class="text-2xl md:text-3xl font-extrabold text-gray-900 drop-shadow-md mb-4">
+        Pengumuman Kelulusan kelas 6C 2025
+      </h1>
+      <p class="text-gray-800 text-base md:text-lg font-semibold drop-shadow-sm mb-2">
+        Silahkan masukkan NISN kamu dengan benar.
+      </p>
+      <p class="text-gray-800 text-sm md:text-base font-medium drop-shadow-sm mb-2">
+        Website ini akan aktif selama 2 bulan ke depan. Jika perlu, kunjungi lagi ya... sukses semua!!
+      </p>
+      <p class="text-gray-700 text-xs font-semibold italic drop-shadow-sm mb-6">
+        made by Mr. Andhika Rizky Perdana
+      </p>
 
-    <input type="text" id="nisnInput" placeholder="Masukkan NISN" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400" />
+      <input type="text" id="nisnInput" placeholder="Masukkan NISN" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400" />
 
-    <button onclick="cekKelulusan()" class="mt-4 w-full bg-blue-600 text-white font-semibold py-2 rounded-lg hover:bg-blue-700 transition duration-200">
-      Cek Kelulusan
-    </button>
+      <button onclick="cekKelulusan()" class="mt-4 w-full bg-blue-600 text-white font-semibold py-2 rounded-lg hover:bg-blue-700 transition duration-200">
+        Cek Kelulusan
+      </button>
 
-    <div id="hasil" class="mt-6 hidden">
-      <p id="namaSiswa" class="text-lg text-gray-700 mb-2 font-semibold"></p>
-      <p class="text-green-600 text-xl font-bold mb-4">🎉 Selamat kamu lulus!</p>
-      <a id="downloadLink" href="#" target="_blank" class="inline-block bg-green-500 text-white px-5 py-2 rounded-lg hover:bg-green-600 transition">
-        Download Surat Kelulusan (PDF)
-      </a>
-    </div>
+      <div id="hasil" class="mt-6 hidden">
+        <p id="namaSiswa" class="text-lg text-gray-700 mb-2 font-semibold"></p>
+        <p class="text-green-600 text-xl font-bold mb-4">🎉 Selamat kamu lulus!</p>
+        <a id="downloadLink" href="#" target="_blank" class="inline-block bg-green-500 text-white px-5 py-2 rounded-lg hover:bg-green-600 transition">
+          Download Surat Kelulusan (PDF)
+        </a>
+      </div>
 
-    <div id="tidakDitemukan" class="mt-6 text-red-500 hidden font-semibold">
-      NISN tidak ditemukan atau belum lulus.
+      <div id="tidakDitemukan" class="mt-6 text-red-500 hidden font-semibold">
+        NISN tidak ditemukan atau belum lulus.
+      </div>
     </div>
   </div>
 
   <script>
     const dataSiswa = {
-      '0134341883': {
-        nama: 'BEKO AHMAD CUDIDO',
-        file: 'https://drive.google.com/file/d/1NhhNInHUUViRgtokogRKgy60-8HheVNA/view?usp=sharing'
-      },
-      '0123276994': {
-        nama: 'DAFFA ALGIRA ADNAN',
-        file: 'https://drive.google.com/file/d/10OvsOeGb2wA27_BoKcDyLkU0c1tMfjqK/view?usp=sharing'
-      },
-      '0133664981': {
-        nama: 'DEANDRA AURELIA NURFARIZ',
-        file: 'https://drive.google.com/file/d/1YPf-sbR0nPCGrLsPtj_iQF6Cuq7rn8a2/view?usp=sharing'
-      },
-      '0132839566': {
-        nama: 'FARAH PUTRI MASYITOH',
-        file: 'https://drive.google.com/file/d/1E5xhjjWP44vtyCW-8F_KjQKzUOvr8hYO/view?usp=sharing'
-      },
-      '3139361893': {
-        nama: 'GILBERT DEMION SETIAWAN',
-        file: 'https://drive.google.com/file/d/1U6hupm5j7Wgqv9DTE5iZQOYMiJZC1wxs/view?usp=sharing'
-      },
-      '0125513198': {
-        nama: 'MATTHEW GIOVIEN CRISTIAN',
-        file: 'https://drive.google.com/file/d/1NfgdU2cDoZ9XoPKQTjAQl5L5KEcb5NeL/view?usp=sharing'
-      },
-      '0131539996': {
-        nama: 'MUHAMMAD RASYA WAFA',
-        file: 'https://drive.google.com/file/d/15Nx2bItcjjnHYOprJ1qf9M0NTyapx9e3/view?usp=sharing'
-      },
-      '0138873515': {
-        nama: 'NAFISAH AMIRAH HISANAH',
-        file: 'https://drive.google.com/file/d/1GFZUTVd6sb3emZJxM6nPKpk4zR1zOYGn/view?usp=sharing'
-      },
-      '3131818603': {
-        nama: 'PRASETYO HADI PRAYITNO',
-        file: 'https://drive.google.com/file/d/1V3HhfxRvK322LT7Jc_AIbJ6lcKrIq1Os/view?usp=sharing'
-      },
-      '0134823812': {
-        nama: 'RACHEL ZAHIRA CALLISTA',
-        file: 'https://drive.google.com/file/d/1mkZM8jxidIs__H6qibCUNIjFb26wUIPo/view?usp=sharing'
-      },
-      '3133677564': {
-        nama: 'RASYA ALVARO WIDIYANTO',
-        file: 'https://drive.google.com/file/d/1SnDeoVs5dUFg7v3W0ZQelQ97RcD1iiGF/view?usp=sharing'
-      },
-      '0135022984': {
-        nama: 'RATU MUFIDA SALSABILA',
-        file: 'https://drive.google.com/file/d/12hMcvSMfjWP1xWvT4TRKUHnsIirPlegx/view?usp=sharing'
-      },
-      '0138785775': {
-        nama: 'RIFQI NURKHALIS MAULANA',
-        file: 'https://drive.google.com/file/d/1bWUq3AlbwifCg0MfF25Xag7_jjSTL51o/view?usp=sharing'
-      },
-      '0139875827': {
-        nama: 'RISHEISA DEVANI',
-        file: 'https://drive.google.com/file/d/1Nqd4-O3uupd4ZLqhcHyGrRZdl-BC5PaR/view?usp=sharing'
-      },
-      '0132404575': {
-        nama: 'ST. NIKEN KHAIRA LUBNA KOMBA',
-        file: 'https://drive.google.com/file/d/1cdqyAF_q5fn-QwqY0GDHcKmCobAl8EGO/view?usp=sharing'
-      }
+      '0134341883': { nama: 'BEKO AHMAD CUDIDO', file: 'https://drive.google.com/file/d/1NhhNInHUUViRgtokogRKgy60-8HheVNA/view?usp=sharing' },
+      '0123276994': { nama: 'DAFFA ALGIRA ADNAN', file: 'https://drive.google.com/file/d/10OvsOeGb2wA27_BoKcDyLkU0c1tMfjqK/view?usp=sharing' },
+      '0133664981': { nama: 'DEANDRA AURELIA NURFARIZ', file: 'https://drive.google.com/file/d/1YPf-sbR0nPCGrLsPtj_iQF6Cuq7rn8a2/view?usp=sharing' },
+      '0132839566': { nama: 'FARAH PUTRI MASYITOH', file: 'https://drive.google.com/file/d/1E5xhjjWP44vtyCW-8F_KjQKzUOvr8hYO/view?usp=sharing' },
+      '3139361893': { nama: 'GILBERT DEMION SETIAWAN', file: 'https://drive.google.com/file/d/1U6hupm5j7Wgqv9DTE5iZQOYMiJZC1wxs/view?usp=sharing' },
+      '0125513198': { nama: 'MATTHEW GIOVIEN CRISTIAN', file: 'https://drive.google.com/file/d/1NfgdU2cDoZ9XoPKQTjAQl5L5KEcb5NeL/view?usp=sharing' },
+      '0131539996': { nama: 'MUHAMMAD RASYA WAFA', file: 'https://drive.google.com/file/d/15Nx2bItcjjnHYOprJ1qf9M0NTyapx9e3/view?usp=sharing' },
+      '0138873515': { nama: 'NAFISAH AMIRAH HISANAH', file: 'https://drive.google.com/file/d/1GFZUTVd6sb3emZJxM6nPKpk4zR1zOYGn/view?usp=sharing' },
+      '3131818603': { nama: 'PRASETYO HADI PRAYITNO', file: 'https://drive.google.com/file/d/1V3HhfxRvK322LT7Jc_AIbJ6lcKrIq1Os/view?usp=sharing' },
+      '0134823812': { nama: 'RACHEL ZAHIRA CALLISTA', file: 'https://drive.google.com/file/d/1mkZM8jxidIs__H6qibCUNIjFb26wUIPo/view?usp=sharing' },
+      '3133677564': { nama: 'RASYA ALVARO WIDIYANTO', file: 'https://drive.google.com/file/d/1SnDeoVs5dUFg7v3W0ZQelQ97RcD1iiGF/view?usp=sharing' },
+      '0135022984': { nama: 'RATU MUFIDA SALSABILA', file: 'https://drive.google.com/file/d/12hMcvSMfjWP1xWvT4TRKUHnsIirPlegx/view?usp=sharing' },
+      '0138785775': { nama: 'RIFQI NURKHALIS MAULANA', file: 'https://drive.google.com/file/d/1bWUq3AlbwifCg0MfF25Xag7_jjSTL51o/view?usp=sharing' },
+      '0139875827': { nama: 'RISHEISA DEVANI', file: 'https://drive.google.com/file/d/1Nqd4-O3uupd4ZLqhcHyGrRZdl-BC5PaR/view?usp=sharing' },
+      '0132404575': { nama: 'ST. NIKEN KHAIRA LUBNA KOMBA', file: 'https://drive.google.com/file/d/1cdqyAF_q5fn-QwqY0GDHcKmCobAl8EGO/view?usp=sharing' }
     };
 
     function cekKelulusan() {
