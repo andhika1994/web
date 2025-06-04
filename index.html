@@ -3,72 +3,97 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pengumuman Kelulusan Kelas 6C</title>
+  <title>Kelulusan 6C 2025</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     body {
       margin: 0;
-      background-image: url('FOTO.jpg');
-      background-size: contain; /* Tampilkan gambar penuh */
-      background-repeat: no-repeat;
-      background-position: top center;
-      background-attachment: scroll; /* Biarkan ikut scroll */
+      font-family: sans-serif;
+      background-color: #f8fafc;
     }
-
+    .active {
+      font-weight: bold;
+      border-b-2 border-blue-600;
+    }
     @keyframes fade-in-up {
-      from {
-        opacity: 0;
-        transform: translateY(10px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
-
-    .fade-in-up {
-      animation: fade-in-up 0.8s ease-out both;
+    .fade-in-up { animation: fade-in-up 0.8s ease-out both; }
+    .background-image {
+      background-image: url('FOTO.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      min-height: 80vh;
     }
   </style>
 </head>
 <body>
 
-  <div class="min-h-screen flex flex-col items-center justify-center px-4 py-12 fade-in-up">
+  <!-- Navigasi -->
+  <nav class="bg-white shadow-md p-4 flex justify-center space-x-6 text-gray-700 font-semibold text-lg sticky top-0 z-50">
+    <button onclick="showSection('home')" class="hover:text-blue-600" id="nav-home">Home</button>
+    <button onclick="showSection('kelulusan')" class="hover:text-blue-600" id="nav-kelulusan">Cek Kelulusan</button>
+    <button onclick="showSection('galeri')" class="hover:text-blue-600" id="nav-galeri">Foto Kebersamaan</button>
+  </nav>
+
+  <!-- Home -->
+  <section id="home" class="background-image flex items-center justify-center text-white text-3xl font-bold">
+    <!-- Kosong seperti permintaan -->
+  </section>
+
+  <!-- Cek Kelulusan -->
+  <section id="kelulusan" class="hidden fade-in-up py-12 px-4 flex justify-center">
     <div class="bg-white/75 backdrop-opacity-70 p-8 rounded-2xl shadow-2xl w-full max-w-md text-center">
       <h1 class="text-2xl md:text-3xl font-extrabold text-gray-900 drop-shadow-md mb-4">
         Pengumuman Kelulusan kelas 6C 2025
       </h1>
-      <p class="text-gray-800 text-base md:text-lg font-semibold drop-shadow-sm mb-2">
-        Silahkan masukkan NISN kamu dengan benar.
-      </p>
-      <p class="text-gray-800 text-sm md:text-base font-medium drop-shadow-sm mb-2">
-        Website ini akan aktif selama 2 bulan ke depan. Jika perlu, kunjungi lagi ya... sukses semua!!
-      </p>
-      <p class="text-gray-700 text-xs font-semibold italic drop-shadow-sm mb-6">
-        made by Mr. Andhika Rizky Perdana
-      </p>
+      <p class="text-gray-800 text-base md:text-lg font-semibold mb-2">Silahkan masukkan NISN kamu dengan benar.</p>
+      <p class="text-gray-800 text-sm md:text-base font-medium mb-2">Website ini akan aktif selama 2 bulan ke depan.</p>
+      <p class="text-gray-700 text-xs font-semibold italic mb-6">made by Mr. Andhika Rizky Perdana</p>
 
       <input type="text" id="nisnInput" placeholder="Masukkan NISN" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400" />
 
-      <button onclick="cekKelulusan()" class="mt-4 w-full bg-blue-600 text-white font-semibold py-2 rounded-lg hover:bg-blue-700 transition duration-200">
-        Cek Kelulusan
-      </button>
+      <button onclick="cekKelulusan()" class="mt-4 w-full bg-blue-600 text-white font-semibold py-2 rounded-lg hover:bg-blue-700 transition duration-200">Cek Kelulusan</button>
 
       <div id="hasil" class="mt-6 hidden">
         <p id="namaSiswa" class="text-lg text-gray-700 mb-2 font-semibold"></p>
         <p class="text-green-600 text-xl font-bold mb-4">🎉 Selamat kamu lulus!</p>
-        <a id="downloadLink" href="#" target="_blank" class="inline-block bg-green-500 text-white px-5 py-2 rounded-lg hover:bg-green-600 transition">
-          Download Surat Kelulusan (PDF)
-        </a>
+        <a id="downloadLink" href="#" target="_blank" class="inline-block bg-green-500 text-white px-5 py-2 rounded-lg hover:bg-green-600 transition">Download Surat Kelulusan (PDF)</a>
       </div>
 
-      <div id="tidakDitemukan" class="mt-6 text-red-500 hidden font-semibold">
-        NISN tidak ditemukan atau belum lulus.
-      </div>
+      <div id="tidakDitemukan" class="mt-6 text-red-500 hidden font-semibold">NISN tidak ditemukan atau belum lulus.</div>
     </div>
-  </div>
+  </section>
+
+  <!-- Galeri -->
+  <section id="galeri" class="hidden px-6 py-12 bg-gray-100">
+    <h2 class="text-center text-2xl font-bold text-gray-800 mb-8">Galeri Foto Kebersamaan</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+      <img src="foto1.jpg" alt="Foto 1" class="rounded-xl shadow-md hover:scale-105 transition duration-300" />
+      <img src="foto2.jpg" alt="Foto 2" class="rounded-xl shadow-md hover:scale-105 transition duration-300" />
+      <img src="foto3.jpg" alt="Foto 3" class="rounded-xl shadow-md hover:scale-105 transition duration-300" />
+      <img src="foto4.jpg" alt="Foto 4" class="rounded-xl shadow-md hover:scale-105 transition duration-300" />
+      <img src="foto5.jpg" alt="Foto 5" class="rounded-xl shadow-md hover:scale-105 transition duration-300" />
+      <img src="foto6.jpg" alt="Foto 6" class="rounded-xl shadow-md hover:scale-105 transition duration-300" />
+    </div>
+  </section>
 
   <script>
+    const sections = ['home', 'kelulusan', 'galeri'];
+
+    function showSection(section) {
+      sections.forEach(id => {
+        document.getElementById(id).classList.add('hidden');
+        document.getElementById('nav-' + id).classList.remove('text-blue-600');
+      });
+      document.getElementById(section).classList.remove('hidden');
+      document.getElementById('nav-' + section).classList.add('text-blue-600');
+    }
+
+    showSection('home'); // tampilkan home saat awal dibuka
+
     const dataSiswa = {
       '0134341883': { nama: 'BEKO AHMAD CUDIDO', file: 'https://drive.google.com/file/d/1NhhNInHUUViRgtokogRKgy60-8HheVNA/view?usp=sharing' },
       '0123276994': { nama: 'DAFFA ALGIRA ADNAN', file: 'https://drive.google.com/file/d/10OvsOeGb2wA27_BoKcDyLkU0c1tMfjqK/view?usp=sharing' },
